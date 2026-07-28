@@ -1,0 +1,17 @@
+[
+  {
+    "username": "rahulshettyacademy",
+    "password": "Learning@830$3mK2",
+    "expectedResult": "SUCCESS"
+  },
+  {
+    "username": "invaliduser",
+    "password": "Learning@830$3mK2",
+    "expectedResult": "FAILURE"
+  },
+  {
+    "username": "rahulshettyacademy",
+    "password": "wrongpassword",
+    "expectedResult": "FAILURE"
+  }
+]

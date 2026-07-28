@@ -1,0 +1,23 @@
+<suite name="Automation Suite"
+       parallel="methods"
+       thread-count="1">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+        <listener class-name="retry.RetryTransformer"/>
+    </listeners>
+
+    <test name="Regression">
+
+        <classes>
+
+<!--            <class name="tests.Demo"/>-->
+            <class name="tests.LoginPageTest"/>
+
+<!--            <class name="tests.HomePageTest"/>-->
+
+        </classes>
+
+    </test>
+
+</suite>
