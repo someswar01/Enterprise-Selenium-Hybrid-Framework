@@ -2,11 +2,6 @@ pipeline {
 
     agent any
 
-    tools {
-        jdk 'JDK21'
-        maven 'Maven'
-    }
-
     environment {
         BROWSER = "chrome"
         ENV = "qa"
