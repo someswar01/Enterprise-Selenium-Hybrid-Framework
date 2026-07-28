@@ -1,36 +1,53 @@
-# 🚀 Selenium Hybrid Automation Framework
+# 🚀 Enterprise Selenium Hybrid Framework
 
-An **Enterprise-Level Selenium Automation Framework** developed using **Java 21, Selenium 4, TestNG, Maven, and the Page Object Model (POM)**. The framework is designed by following industry best practices with a focus on **scalability, maintainability, reusability, and CI/CD readiness**.
+An enterprise-grade UI Automation Framework built using **Java, Selenium 4, TestNG, Maven, Page Object Model (POM), ThreadLocal Design Pattern, Extent Reports, Apache POI, Jackson, Log4j2, GitHub Actions, and Jenkins**.
 
-It supports **cross-browser execution, parallel execution, data-driven testing, reusable utilities, ThreadLocal WebDriver management, Extent Reports, Log4j2 logging, and Jenkins integration**, making it suitable for real-world automation projects.
+This framework follows industry best practices with reusable utilities, scalable architecture, maintainable code structure, data-driven testing, cross-browser execution, and CI/CD integration. It is designed to demonstrate how a production-ready Selenium automation framework is structured and implemented.
 
 ---
 
-# 📌 Key Features
+# 📖 Table of Contents
 
-- Selenium 4 Web Automation
-- Java 21
-- TestNG Framework
-- Maven Build Management
-- Page Object Model (POM)
-- ThreadLocal WebDriver Management
+- Overview
+- Technology Stack
+- Framework Features
+- Project Structure
+- Framework Architecture
+- Design Patterns Used
+- Utilities
+- Data-Driven Testing
+- Reporting
+- Logging
+- Assertions
+- Retry Mechanism
+- Parallel Execution
 - Cross Browser Execution
-- Parallel Test Execution
-- Retry Failed Test Cases
-- Soft Assertions
-- Explicit Wait Utilities
-- Screenshot Capture
-- Extent HTML Reports
-- Log4j2 Logging
-- External Configuration Management
-- Environment-Based Execution
-- Excel Data-Driven Testing
-- JSON Data-Driven Testing
-- Browser Storage Utilities
-- Shadow DOM Support
-- Reusable Utility Classes
-- GitHub Integration
-- Jenkins CI/CD Ready
+- Environment Configuration
+- Jenkins Pipeline
+- GitHub Actions
+- Project Execution
+- Reports
+- Future Enhancements
+- Author
+
+---
+
+# 📌 Overview
+
+The Enterprise Selenium Hybrid Framework is designed to automate web applications using modern Selenium automation practices.
+
+The framework provides:
+
+- Scalable Architecture
+- Reusable Components
+- Thread-safe WebDriver
+- Enterprise-level Utilities
+- Data-Driven Testing
+- Cross Browser Support
+- Headless Execution
+- Rich HTML Reporting
+- CI/CD Integration
+- Easy Maintenance
 
 ---
 
@@ -39,7 +56,7 @@ It supports **cross-browser execution, parallel execution, data-driven testing, 
 | Technology | Version |
 |------------|----------|
 | Java | 21 |
-| Selenium | 4.x |
+| Selenium WebDriver | 4.x |
 | TestNG | Latest |
 | Maven | Latest |
 | Apache POI | Latest |
@@ -47,13 +64,50 @@ It supports **cross-browser execution, parallel execution, data-driven testing, 
 | Log4j2 | Latest |
 | Extent Reports | Latest |
 | WebDriverManager | Latest |
+| Git | Latest |
+| GitHub | Latest |
+| Jenkins | Latest |
 
 ---
 
-# 🏗 Framework Architecture
+# ✨ Framework Features
+
+- Selenium 4 Automation
+- Java 21
+- TestNG Framework
+- Maven Build Tool
+- Page Object Model (POM)
+- ThreadLocal WebDriver
+- Driver Factory Pattern
+- Cross Browser Execution
+- Parallel Execution Support
+- Retry Analyzer
+- Hard & Soft Assertions
+- Explicit Wait Utilities
+- Screenshot Capture
+- Extent HTML Reports
+- Log4j2 Logging
+- Excel Data-Driven Testing
+- JSON Data-Driven Testing
+- Environment-Based Execution
+- Headless Execution
+- Reusable Utility Classes
+- GitHub Integration
+- GitHub Actions Workflow
+- Jenkins Freestyle Job
+- Jenkins Pipeline
+- CI/CD Ready
+
+---
+
+# 🏗 Project Structure
 
 ```
-SeleniumHybridFramework
+Enterprise-Selenium-Hybrid-Framework
+│
+├── .github
+│   └── workflows
+│       └── selenium-framework.yml
 │
 ├── src
 │
@@ -61,7 +115,6 @@ SeleniumHybridFramework
 │   ├── java
 │   │
 │   ├── actions
-│   ├── base
 │   ├── config
 │   ├── constants
 │   ├── driver
@@ -95,6 +148,7 @@ SeleniumHybridFramework
 │       ├── testdata
 │       └── testng.xml
 │
+├── Jenkinsfile
 ├── pom.xml
 ├── README.md
 └── .gitignore
@@ -102,92 +156,148 @@ SeleniumHybridFramework
 
 ---
 
-# 📂 Framework Modules
-
-## Base Layer
-
-The Base Layer contains the common setup and teardown methods used across all test classes.
-
-Responsibilities:
-
-- Browser initialization
-- Browser termination
-- Driver management
-- Common test setup
-- Common test cleanup
-
----
-
-## Driver Layer
-
-Responsible for browser creation and management using the **ThreadLocal Design Pattern**, enabling thread-safe parallel execution.
-
-Components:
-
-- DriverFactory
-- DriverManager
-
-Supported Browsers:
-
-- Chrome
-- Edge
-- Firefox
-
----
-
-## Configuration Layer
-
-Application configuration is maintained externally using properties files.
-
-Example:
-
-```properties
-browser=chrome
-headless=false
-maximize=true
-app.url=https://rahulshettyacademy.com/client
-```
-
-Supports multiple execution environments:
+# 🏛 Framework Architecture
 
 ```
-config-dev.properties
-config-qa.properties
-config-uat.properties
-config-prod.properties
-```
+TestNG Test
 
-Example Execution:
+↓
 
-```bash
-mvn clean test -Denv=qa
+BaseTest
+
+↓
+
+Driver Factory
+
+↓
+
+ThreadLocal Driver
+
+↓
+
+Page Objects
+
+↓
+
+Utilities
+
+↓
+
+Assertions
+
+↓
+
+Extent Reports
+
+↓
+
+Jenkins / GitHub Actions
 ```
 
 ---
 
-# 📄 Page Object Model (POM)
+# 🎯 Design Patterns Used
 
-Each application page is implemented as a separate Java class.
+The framework follows industry-standard design patterns.
+
+| Pattern | Purpose |
+|----------|----------|
+| Page Object Model | Maintainable Page Classes |
+| Singleton | Config & Report Management |
+| Factory Pattern | Browser Initialization |
+| Builder Pattern | Future Extensibility |
+| ThreadLocal Pattern | Parallel Execution |
+| Utility Pattern | Common Reusable Methods |
+
+---
+
+# 📄 Page Object Model
+
+Each application page is maintained separately.
 
 Example:
 
 ```
 LoginPage
+
 HomePage
+
+CheckoutPage
+
+CartPage
 ```
 
-Benefits:
+Advantages
 
-- Better maintainability
-- High code reusability
-- Easy maintenance
-- Clear separation of page logic from test logic
+- Better Code Organization
+- Easy Maintenance
+- High Reusability
+- Low Coupling
 
 ---
 
-# ⚙ Utility Classes
+# 🚗 Driver Management
 
-The framework provides reusable utility classes to simplify Selenium automation.
+The framework uses ThreadLocal WebDriver for thread-safe execution.
+
+Components
+
+- DriverFactory
+- DriverManager
+
+Supported Browsers
+
+- Chrome
+- Edge
+- Firefox
+
+Supports
+
+- Headed Execution
+- Headless Execution
+- Parallel Execution
+
+---
+
+# ⚙ Configuration Management
+
+Execution is controlled using external configuration files.
+
+Example
+
+```
+browser=chrome
+
+headless=false
+
+maximize=true
+
+app.url=https://rahulshettyacademy.com/client
+```
+
+Multiple Environment Support
+
+```
+config-dev.properties
+
+config-qa.properties
+
+config-uat.properties
+
+config-prod.properties
+```
+
+Run QA Environment
+
+```
+mvn clean test -Denv=qa
+```
+
+---
+
+# 📚 Utility Classes
+
+The framework provides reusable utility classes.
 
 ## Browser Utilities
 
@@ -196,6 +306,8 @@ The framework provides reusable utility classes to simplify Selenium automation.
 - FrameUtils
 - AlertUtils
 
+---
+
 ## Web Element Utilities
 
 - ElementActions
@@ -203,7 +315,8 @@ The framework provides reusable utility classes to simplify Selenium automation.
 - JavaScriptUtils
 - MouseActionsUtils
 - KeyboardActionsUtils
-- DropdownUtils
+
+---
 
 ## Data Utilities
 
@@ -212,6 +325,17 @@ The framework provides reusable utility classes to simplify Selenium automation.
 - DateUtils
 - RandomDataUtils
 
+---
+
+## Advanced Utilities
+
+- ScreenshotUtils
+- DownloadUtils
+- FileUploadUtils
+- TableUtils
+
+---
+
 ## Browser Storage Utilities
 
 - CookieUtils
@@ -219,36 +343,31 @@ The framework provides reusable utility classes to simplify Selenium automation.
 - SessionStorageUtils
 - ShadowDomUtils
 
-## Other Utilities
-
-- TableUtils
-- ScreenshotUtils
-
 ---
 
-# 📊 Data-Driven Testing
+# 📊 Data Driven Testing
 
-The framework supports multiple data sources.
+Supports two different approaches.
 
 ## Excel Data Provider
 
-Implemented using **Apache POI**.
-
-Example:
+Uses Apache POI.
 
 ```
 @DataProvider
+
 ExcelDataProvider
 ```
 
+---
+
 ## JSON Data Provider
 
-Implemented using **Jackson ObjectMapper**.
-
-Example:
+Uses Jackson ObjectMapper.
 
 ```
 @DataProvider
+
 JsonDataProvider
 ```
 
@@ -256,238 +375,307 @@ JsonDataProvider
 
 # 📝 Logging
 
-Log4j2 is used for logging framework execution.
+Uses Log4j2.
 
-Advantages:
+Features
 
-- Console logging
-- File logging
-- Better debugging
-- Easy execution tracking
+- Console Logs
+- File Logs
+- Execution Tracking
+- Debugging Support
 
 ---
 
 # 📈 Reporting
 
-The framework uses **Extent Reports** to generate interactive HTML reports.
+Extent Reports are generated after every execution.
 
-Features:
+Features
 
-- Passed Tests
-- Failed Tests
-- Skipped Tests
-- Screenshots
+- Pass
+- Fail
+- Skip
 - Exception Stack Trace
-- Execution Timeline
+- Screenshots
+- Categories
+- Timeline
+- System Information
+
+Report Location
+
+```
+test-output/ExtentReports/
+```
 
 ---
 
 # ✅ Assertions
 
-Supports:
+Supports
 
 - Hard Assertions
 - Soft Assertions
 
-Custom Utility:
+Custom Utility
 
 ```
 AssertionUtils
 ```
 
+Soft Assertions are automatically collected and executed after each test.
+
 ---
 
-# 🔄 Retry Mechanism
+# 🔁 Retry Mechanism
 
 Automatically retries failed test cases.
 
-Implemented using:
+Implemented using
 
 ```
 RetryAnalyzer
 ```
 
-Retry count can be configured in:
-
-```
-config.properties
-```
+Retry count is configurable using the configuration file.
 
 ---
 
 # 🌐 Cross Browser Execution
 
-Supported Browsers:
+Supported Browsers
 
 - Chrome
-- Edge
 - Firefox
+- Edge
 
-Example:
+Examples
 
-```bash
+```
+mvn clean test -Dbrowser=chrome
+```
+
+```
 mvn clean test -Dbrowser=edge
+```
+
+```
+mvn clean test -Dbrowser=firefox
 ```
 
 ---
 
-# ⚡ Parallel Execution
+# 🧵 Parallel Execution
 
-Parallel execution is supported using TestNG.
+Supports parallel execution using TestNG.
 
-Example:
+Example
 
 ```xml
-parallel="methods"
-thread-count="3"
+<suite parallel="methods" thread-count="3">
 ```
+
+Thread-safe execution is achieved using ThreadLocal WebDriver.
+
+---
+
+# 👻 Headless Execution
+
+Run tests without opening the browser.
+
+```
+mvn clean test -Dheadless=true
+```
+
+Ideal for Jenkins and CI/CD pipelines.
 
 ---
 
 # 📸 Screenshots
 
-Automatic screenshots can be captured:
+Automatic screenshot capture
 
-- On Test Failure
-- On Test Success (Configurable)
+- On Failure
+- On Success (Configurable)
 
-Output Location:
+Location
 
 ```
-test-output/screenshots
+test-output/screenshots/
 ```
 
 ---
 
-# 📑 Reports
+# 🚀 Jenkins Integration
 
-Execution reports are generated inside:
+The framework is integrated with Jenkins Pipeline.
+
+Pipeline Stages
+
+- Checkout Source Code
+- Clean Project
+- Execute Tests
+- Generate Reports
+- Archive Reports
+- Archive Screenshots
+
+Supports
+
+- Freestyle Jobs
+- Pipeline Jobs
+
+---
+
+# ⚡ GitHub Actions
+
+GitHub Actions workflow is included.
+
+Features
+
+- Automatic Build
+- Maven Execution
+- Test Execution
+- CI Ready
+
+Workflow Location
 
 ```
-test-output/
+.github/workflows/selenium-framework.yml
 ```
 
-Includes:
-
-- Extent HTML Report
-- Screenshots
-
 ---
 
-# 🏛 Design Patterns Used
-
-The framework follows industry-standard design patterns.
-
-- Page Object Model (POM)
-- ThreadLocal Pattern
-- Factory Pattern
-- Singleton Pattern
-- Utility Pattern
-
----
-
-# ⚠ Exception Handling
-
-Custom exceptions improve debugging and framework readability.
-
-Examples:
-
-- FrameworkException
-- BrowserException
-- ConfigReaderException
-
----
-
-# ▶ How to Execute
+# ▶️ Project Execution
 
 Clone Repository
 
-```bash
-git clone https://github.com/someswar01/SeleniumHybridFramework.git
+```
+git clone https://github.com/someswar01/Enterprise-Selenium-Hybrid-Framework.git
+```
+
+Move into Project
+
+```
+cd Enterprise-Selenium-Hybrid-Framework
 ```
 
 Install Dependencies
 
-```bash
+```
 mvn clean install
 ```
 
-Run All Tests
+Run Tests
 
-```bash
+```
 mvn clean test
 ```
 
-Run on Specific Browser
+Run Chrome
 
-```bash
+```
+mvn clean test -Dbrowser=chrome
+```
+
+Run Edge
+
+```
 mvn clean test -Dbrowser=edge
 ```
 
-Run on Specific Environment
+Run Firefox
 
-```bash
+```
+mvn clean test -Dbrowser=firefox
+```
+
+Run Headless
+
+```
+mvn clean test -Dheadless=true
+```
+
+Run QA Environment
+
+```
 mvn clean test -Denv=qa
 ```
 
 ---
 
-# 🔄 Continuous Integration
+# 📂 Reports
 
-The framework is designed for seamless CI/CD integration.
+After execution
 
-Supported Platforms:
+```
+test-output
+```
 
-- Jenkins
-- GitHub Actions
-- Azure DevOps
+Contains
+
+- Extent Report
+- Screenshots
+- TestNG Reports
 
 ---
 
-# 🚀 Future Enhancements
+# 💡 Future Enhancements
 
 - Selenium Grid
-- Docker
+- Docker Integration
 - BrowserStack Integration
 - LambdaTest Integration
 - REST Assured Integration
 - Allure Reports
-- GitHub Actions Pipeline
+- Slack Notifications
+- Email Notifications
+- Azure DevOps Pipeline
 
 ---
 
-# 🎯 Advantages
+# 🤝 Contributing
 
-- Scalable Framework Architecture
-- Reusable Components
-- Thread-Safe Execution
-- Easy Maintenance
-- Cross-Browser Support
-- Data-Driven Testing
-- Parallel Execution
-- Enterprise Ready
-- CI/CD Ready
+Contributions, suggestions, and improvements are welcome.
+
+If you find any issue or have ideas to improve the framework, feel free to fork the repository and create a pull request.
 
 ---
 
-# 👨‍💻 Developed By
+# 📄 License
+
+This project is intended for learning, demonstration, and portfolio purposes. Feel free to use it as a reference for building enterprise automation frameworks.
+
+---
+
+# 👨‍💻 Author
 
 **Somesh C**
 
-**Automation Test Engineer**
+Automation Test Engineer
 
-**Skills**
+### Skills
 
 - Java
-- Selenium
+- Selenium WebDriver
 - TestNG
 - Maven
-- Jenkins
-- Git & GitHub
+- REST Assured
 - SQL
-- API Testing
-- Automation Framework Development
+- Git & GitHub
+- Jenkins
+- CI/CD
+- Page Object Model
+- Hybrid Framework Development
 
 ---
 
-## ⭐ If you found this project useful, consider giving it a Star on GitHub!
+# ⭐ Support
+
+If you found this project helpful:
+
+⭐ Star this repository
+
+🍴 Fork this repository
+
+📢 Share it with the automation testing community
+
+Happy Testing! 🚀
