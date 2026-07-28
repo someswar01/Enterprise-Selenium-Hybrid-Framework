@@ -29,14 +29,16 @@ pipeline {
 
         stage('Archive Extent Report') {
             steps {
-                archiveArtifacts artifacts: 'test-output/ExtentReports/*.html', fingerprint: true
-            }
+                archiveArtifacts artifacts: 'test-output/ExtentReports/**/*.*',
+                        fingerprint: true,
+                        allowEmptyArchive: true            }
         }
 
         stage('Archive Screenshots') {
             steps {
-                archiveArtifacts artifacts: 'test-output/screenshots/**/*.*', fingerprint: true
-            }
+                archiveArtifacts artifacts: 'test-output/screenshots/**/*.*',
+                        fingerprint: true,
+                        allowEmptyArchive: true            }
         }
     }
 
@@ -44,9 +46,13 @@ pipeline {
 
         always {
 
-            junit '**/surefire-reports/*.xml'
+            junit '**/target/surefire-reports/*.xml'
 
-            archiveArtifacts artifacts: 'test-output/**/*.*', fingerprint: true
+            archiveArtifacts(
+                    artifacts: 'test-output/**/*.*',
+                    fingerprint: true,
+                    allowEmptyArchive: true
+            )
 
             cleanWs()
         }
